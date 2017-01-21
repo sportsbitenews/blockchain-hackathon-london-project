@@ -56,7 +56,8 @@ app.controller("mainCtrl", function ($scope, $q) {
                 console.error(error);
                 d.reject(error);
             }
-        })
+        });
+        return d.promise;
     }
 
     function transfer(recipent, amount) {
@@ -69,19 +70,24 @@ app.controller("mainCtrl", function ($scope, $q) {
                 console.error(error);
                 d.reject(error);
             }
-        })
+        });
+        return d.promise;
     }
 
-    self.checkBalance = function (address) {
+    self.getClientAddress = function(){
+       return web3.eth.accounts[0];
+    };
 
-
+    self.checkBalance = function () {
+        var resultToReturn = null;
+        checkBalance(web3.eth.accounts[0]).then(function (result) {
+            resultToReturn = result;
+        });
+        return resultToReturn;
     };
 
     setTimeout(function () {
         contract = web3.eth.contract(abi).at(tokenAddress);
-        checkBalance("0xef5b153bce4d7905794d8564e275071c382d3527").then(function (result) {
-            self.checkedBalance = result;
-        });
     }, 1000);
 
 });
