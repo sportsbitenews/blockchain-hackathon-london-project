@@ -46,24 +46,28 @@ app.controller("mainCtrl", function ($scope, $q) {
         return d.promise;
     }
 
-    function issue(amount, callback) {
+    function issue(amount) {
+        var d = $q.defer();
         contract.issue(amount, {from: web3.eth.accounts[0]}, function (error, result) {
             if (!error) {
                 console.log("Issued currency " + result);
-                callback(result);
+                d.resolve(result);
             } else {
                 console.error(error);
+                d.reject(error);
             }
         })
     }
 
-    function transfer(recipent, amount, callback) {
+    function transfer(recipent, amount) {
+        var d = $q.defer();
         contract.transfer(recipent, amount, {from: web3.eth.accounts[0]}, function (error, result) {
             if (!error) {
                 console.log("Transferred currency " + result);
-                callback(result);
+                d.resolve(result);
             } else {
                 console.error(error);
+                d.reject(error);
             }
         })
     }
@@ -71,11 +75,11 @@ app.controller("mainCtrl", function ($scope, $q) {
     self.checkBalance = function (address) {
 
 
-    }
+    };
 
     setTimeout(function () {
         contract = web3.eth.contract(abi).at(tokenAddress);
-        checkBalance(tokenAddress).then(function (result) {
+        checkBalance("0xef5b153bce4d7905794d8564e275071c382d3527").then(function (result) {
             self.checkedBalance = result;
         });
     }, 1000);
