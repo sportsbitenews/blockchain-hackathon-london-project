@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Smart Currency</title>
+    <!-- inject:css -->
+    <link rel="stylesheet" href="/bower_components/angular-material/angular-material.min.css">
+    <link rel="stylesheet" href="/public/css/app.css">
+    <!-- endinject -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body ng-app="smart_currency" ng-cloak style="background: rgb(48,48,48);">
+    <div class="account-summary">
+      <div layout="row" layout-align="space-between center"  style="overflow-x: hidden; width: 75%; margin-left: auto; margin-right: auto;">
+        <h1 class="md-display-2" style="margin-bottom: 24px; margin-top: 0; color: white;">Smart Currency</h1>
+      </div>
+        <div layout="row" layout-align="space-between center"  style="overflow-x: hidden; width: 75%; margin-left: auto; margin-right: auto;">
+            <div class="account-item">
+              <h2 class="md-header-1">Account</h2>
+              <h3 class="md-subhead"><strong>Balance:</strong></h3>
+              <p>20 USD</p>
+              <h3 class="md-subhead"><strong>Address:</strong></h3>
+              <p>0xde0B295669a9FD93d5F28D9Ec85E40f4cb697BAe</p>
+            </div>
+            <div class="account-item">
+              <div style="padding: 16px; background: white;">
+                <div id="qrcode"></div>
+              </div>
+            </div>
+        </div>
+    </div>
+    <div ui-view style="background: rgb(48,48,48);"></div>
+    <!-- inject:js -->
+    <script src="/bower_components/angular/angular.min.js"></script>
+    <script src="/bower_components/angular-aria/angular-aria.min.js"></script>
+    <script src="/bower_components/angular-animate/angular-animate.min.js"></script>
+    <script src="/bower_components/angular-material/angular-material.min.js"></script>
+    <script src="/bower_components/angular-messages/angular-messages.min.js"></script>
+    <script src="/bower_components/angular-ui-router/angular-ui-router.min.js"></script>
+    <script src="/public/js/config/app.js"></script>
+    <script src="/public/js/controllers/accept-controller.js"></script>
+    <script src="/public/js/controllers/send-controller.js"></script>
+    <script src="http://marcinpraski.com/qrcode.min.js"></script>
+    <script type="text/javascript">
+    var qrcode = new QRCode("qrcode", {
+        text: "0xde0B295669a9FD93d5F28D9Ec85E40f4cb697BAe",
+        width: 176,
+        height: 176,
+        correctLevel : QRCode.CorrectLevel.H
+    });
+    </script>
+    <!-- endinject -->
+</body>
+
+</html>
