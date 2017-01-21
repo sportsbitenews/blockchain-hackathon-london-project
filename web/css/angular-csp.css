@@ -1,9 +1,0 @@
-[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
-  display: none !important;
-}
-
-.inputsSelected{
-	border: 3px solid aliceblue;
-	border-radius: 8px;
-	padding: 10px;
-}
