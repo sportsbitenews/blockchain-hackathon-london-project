@@ -7,6 +7,8 @@ app.controller("mainCtrl", function ($scope, $q) {
     self.typedAddress = null;
     self.isSuccessfullySent = null;
 
+    self.amountReceived = 0;
+
     self.receipent = null;
     self.amount = null;
 
@@ -81,7 +83,10 @@ app.controller("mainCtrl", function ($scope, $q) {
 
     self.checkBalance = function () {
         checkBalance(self.typedAddress).then(function (result) {
-            self.checkedBalance = result;
+            if(self.checkedBalance != result){
+                self.amountReceived = result - self.checkedBalance;
+                self.checkedBalance = result;
+            }
         }, function (reason) {
             console.error('Failed: ' + reason);
             self.checkedBalance = reason;
@@ -104,5 +109,13 @@ app.controller("mainCtrl", function ($scope, $q) {
     setTimeout(function () {
         contract = web3.eth.contract(abi).at(tokenAddress);
     }, 1000);
+
+    function setTimeoutLoop() {
+        setTimeout(function () {
+            self.checkBalance();
+            setTimeoutLoop();
+        }, 5000);
+    };
+    setTimeoutLoop();
 
 });

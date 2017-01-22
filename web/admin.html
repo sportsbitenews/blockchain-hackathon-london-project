@@ -14,6 +14,11 @@
 </head>
 
 <body ng-controller="mainCtrl as admin">
+<div class="col-lg-4 alert-message">
+    <div ng-show="admin.amountReceived!=0" class="alert alert-info">
+        Address <strong>{{admin.typedAddress}}</strong> received <strong>{{admin.amountReceived}}</strong>
+    </div>
+</div>
 <div ng-cloak class="container theme-showcase" role="main">
     <div class="jumbotron text-center">
         <h1>PNG Digital Cash</h1>
@@ -33,9 +38,11 @@
                             <span class="input-group-btn">
                                 <button class="btn btn-default" ng-click="admin.pasteClientAddress()" type="button">Use client's address</button>
                             </span>
-                            <input type="text" class="form-control" ng-model="admin.typedAddress" placeholder="Type address">
+                            <input type="text" class="form-control" ng-model="admin.typedAddress"
+                                   placeholder="Type address">
                             <span class="input-group-btn">
-                                <button class="btn btn-default" ng-click="admin.checkBalance()" ng-disabled="!admin.typedAddress" type="button">Search</button>
+                                <button class="btn btn-default" ng-click="admin.checkBalance()"
+                                        ng-disabled="!admin.typedAddress" type="button">Search</button>
                              </span>
                         </div>
                         <h3 ng-show="admin.checkedBalance">Balance: {{admin.checkedBalance}}</h3>
@@ -49,11 +56,13 @@
                     <form>
                         <div class="form-group">
                             <label for="recipient">Recipient</label>
-                            <input type="text" class="form-control" ng-model="admin.receipent" id="recipient" placeholder="Type address">
+                            <input type="text" class="form-control" ng-model="admin.receipent" id="recipient"
+                                   placeholder="Type address">
                         </div>
                         <div class="form-group">
                             <label for="amount">Amount</label>
-                            <input type="text" class="form-control" ng-model="admin.amount" id="amount" placeholder="Insert amount">
+                            <input type="text" class="form-control" ng-model="admin.amount" id="amount"
+                                   placeholder="Insert amount">
                         </div>
                         <button type="submit" ng-click="admin.transfer()" class="btn btn-primary">Send</button>
                         <h3 ng-show="admin.isSuccessfullySent">Transaction submitted</h3>
