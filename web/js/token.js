@@ -74,20 +74,15 @@ app.controller("mainCtrl", function ($scope, $q) {
         return d.promise;
     }
 
-    self.getClientAddress = function(){
-       return web3.eth.accounts[0];
-    };
-
-    self.checkBalance = function () {
-        var resultToReturn = null;
-        checkBalance(web3.eth.accounts[0]).then(function (result) {
-            resultToReturn = result;
-        });
-        return resultToReturn;
+    self.getClientAddress = function () {
+        return web3.eth.accounts[0];
     };
 
     setTimeout(function () {
         contract = web3.eth.contract(abi).at(tokenAddress);
+        checkBalance(web3.eth.accounts[0]).then(function (result) {
+            self.checkedBalance = result;
+        });
     }, 1000);
 
 });

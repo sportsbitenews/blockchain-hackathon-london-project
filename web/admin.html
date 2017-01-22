@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="tokenPanelApp">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- ngCloak -->
+    <link rel="stylesheet" type="text/css" href="./css/angular-csp.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+
+<body ng-controller="mainCtrl as admin">
+<div ng-cloak class="container theme-showcase" role="main">
+    <div class="jumbotron text-center">
+        <h1>PNG Digital Cash</h1>
+    </div>
+
+    <ul class="nav nav-tabs nav-justified custom-navtab">
+        <li class="active"><a data-toggle="tab" href="#checkBalance">Check balance</a></li>
+        <li><a data-toggle="tab" href="#send">Send</a></li>
+    </ul>
+
+    <div class="tab-content">
+        <div id="checkBalance" class="tab-pane fade in active">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title custom-panel-title">Balance</h3>
+                </div>
+                <div class="panel-body">
+                    <h4>{{admin.checkedBalance}}</h4>
+                </div>
+            </div>
+        </div>
+        <div id="send" class="tab-pane fade">
+            <p>Some content in menu 1.</p>
+        </div>
+    </div>
+</div>
+
+<!-- jQuery first, then Tether, then Bootstrap JS, then AngularJS -->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!-- Custom scripts -->
+<script src="./js/token.js"></script>
+</body>
+
+</html>

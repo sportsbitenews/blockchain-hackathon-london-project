@@ -1,9 +1,10 @@
-form{
-	margin-top: 25px;
-	border: 3px solid aliceblue;
-	border-radius: 8px;
-	padding: 10px;
-}
-.title{
+
+.custom-navtab{
 	margin-bottom: 25px;
+	font-size: 20px;
+
+}
+.custom-panel-title{
+	font-size: 20px;
+
 }
