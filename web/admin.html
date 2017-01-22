@@ -26,7 +26,6 @@
 
     <div class="tab-content">
         <div id="checkBalance" class="tab-pane fade in active">
-
             <div class="panel panel-primary">
                 <div class="panel-body">
                     <div class="col-lg-12">
@@ -45,7 +44,22 @@
             </div>
         </div>
         <div id="send" class="tab-pane fade">
-            <p>Some content in menu 1.</p>
+            <div class="panel panel-primary">
+                <div class="panel-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="recipient">Recipient</label>
+                            <input type="text" class="form-control" ng-model="admin.receipent" id="recipient" placeholder="Type address">
+                        </div>
+                        <div class="form-group">
+                            <label for="amount">Amount</label>
+                            <input type="text" class="form-control" ng-model="admin.amount" id="amount" placeholder="Insert amount">
+                        </div>
+                        <button type="submit" ng-click="admin.transfer()" class="btn btn-primary">Send</button>
+                        <h3 ng-show="admin.isSuccessfullySent">Transaction submitted</h3>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 </div>

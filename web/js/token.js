@@ -5,6 +5,10 @@ app.controller("mainCtrl", function ($scope, $q) {
 
     self.checkedBalance = null;
     self.typedAddress = null;
+    self.isSuccessfullySent = null;
+
+    self.receipent = null;
+    self.amount = null;
 
     var tokenAddress = "0xb18e61ca629a8fa039088b271d48c034bb8dfb69";
     var abi = [{
@@ -84,7 +88,15 @@ app.controller("mainCtrl", function ($scope, $q) {
         });
     };
 
-    self.pasteClientAddress = function(){
+    self.transfer = function () {
+        transfer(self.receipent, self.amount).then(function (result) {
+            console.log("Result:" + result);
+        }, function (reason) {
+            console.error('Failed: ' + reason);
+        });
+    };
+
+    self.pasteClientAddress = function () {
         self.typedAddress = web3.eth.accounts[0];
     };
 
