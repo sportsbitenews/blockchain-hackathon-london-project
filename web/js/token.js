@@ -4,6 +4,7 @@ app.controller("mainCtrl", function ($scope, $q) {
     var self = this;
 
     self.checkedBalance = null;
+    self.typedAddress = null;
 
     var tokenAddress = "0xb18e61ca629a8fa039088b271d48c034bb8dfb69";
     var abi = [{
@@ -74,15 +75,22 @@ app.controller("mainCtrl", function ($scope, $q) {
         return d.promise;
     }
 
-    self.getClientAddress = function () {
-        return web3.eth.accounts[0];
+    self.checkBalance = function () {
+        checkBalance(self.typedAddress).then(function (result) {
+            self.checkedBalance = result;
+        }, function (reason) {
+            console.error('Failed: ' + reason);
+            self.checkedBalance = reason;
+        });
     };
+
+    self.pasteClientAddress = function(){
+        self.typedAddress = web3.eth.accounts[0];
+    };
+
 
     setTimeout(function () {
         contract = web3.eth.contract(abi).at(tokenAddress);
-        checkBalance(web3.eth.accounts[0]).then(function (result) {
-            self.checkedBalance = result;
-        });
     }, 1000);
 
 });
